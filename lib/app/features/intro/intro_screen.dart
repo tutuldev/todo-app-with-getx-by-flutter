@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:statemannagement_with_getx/app/general/routes/app_routes.dart';
 class IntroScreen extends StatefulWidget {
@@ -13,6 +14,9 @@ class _IntroScreenState extends State<IntroScreen> {
    final introKey = GlobalKey<IntroductionScreenState>();
 
      void _onIntroEnd(context) {
+       final box = GetStorage();
+       box.write("intro", true);
+      
     Get.toNamed(AppRoutes.home);
   }
 
