@@ -1,6 +1,8 @@
 
 
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:statemannagement_with_getx/app/features/authentication/screen/login_screen.dart';
+import 'package:statemannagement_with_getx/app/features/authentication/screen/signup_screen.dart';
 import 'package:statemannagement_with_getx/app/features/home/screens/home_screen.dart';
 import 'package:statemannagement_with_getx/app/features/intro/intro_screen.dart';
 import 'package:statemannagement_with_getx/app/features/splash/splash_screen.dart';
@@ -21,6 +23,12 @@ class AppPages {
     GetPage(
       name: AppRoutes.home, 
       page: ()=> const HomeScreen()
+      ), GetPage(
+      name: AppRoutes.logIn,
+      page: ()=> const LoginScreen()
+      ), GetPage(
+      name: AppRoutes.signUp,
+      page: ()=> const SignupScreen()
       ),
   ];
 }

@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     await Future.delayed(const Duration(seconds: 2)).then((_){
       box.read("intro") == true
-          ? Get.toNamed(AppRoutes.home)
+          ? Get.toNamed(AppRoutes.logIn)
           : Get.toNamed(AppRoutes.intro);
     });
   }
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return  Scaffold(
       backgroundColor: Colors.grey,
       body: Center(
-        child: Image.asset('images/logo.png'),
+        child: Image.asset('images/logo2.png'),
       ),
     );
   }

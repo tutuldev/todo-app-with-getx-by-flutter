@@ -48,7 +48,7 @@ class _IntroScreenState extends State<IntroScreen> {
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(top: 16, right: 16),
-            child: _buildImage('logo.png', 100),
+            child: _buildImage('logo2.png', 100),
           ),
         ),
       ),
