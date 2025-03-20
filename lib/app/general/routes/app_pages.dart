@@ -30,7 +30,10 @@ class AppPages {
       binding: LoginBindings(),
       ), GetPage(
       name: AppRoutes.signUp,
-      page: ()=> const SignupScreen()
+      page: ()=>  SignupScreen(),
+      binding: LoginBindings(),
+
+
       ),
   ];
 }
