@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:statemannagement_with_getx/app/features/authentication/controller/login_controller.dart';
 import 'package:statemannagement_with_getx/app/general/constants/stye.dart';
 import 'package:statemannagement_with_getx/app/general/routes/app_routes.dart';
 
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+   LoginScreen({super.key});
+
+  final LoginController loginController =  Get.put(LoginController());
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +31,16 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 32),
                 const   Text("welcome back !",style: titleTextStyle,),
                 const SizedBox(height: 20),
-                Form(child:
+                Form(
+                  key:formKey,
+                  child:
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                   const  Text("Email Address",style: labelTextStyle,),
                   const SizedBox(height: 20),
                     TextFormField(
+                      controller: loginController.emailController.value,
                        style: TextStyle(
                         color: Colors.white,
                       ),
@@ -50,6 +57,15 @@ class LoginScreen extends StatelessWidget {
                         border: OutlineInputBorder(),
                         contentPadding: EdgeInsets.only(left: 8),
                       ),
+                      validator: (value){
+                        
+                       if(value!.isEmpty){
+                          return "Field can't be empty";
+                      }
+                      if(value.isNotEmpty && !value.contains('@')){
+                        return "Email is not valid";
+                      }
+                      }
                     ),
                   const SizedBox(height: 20),
                   const  Text("Password",style: labelTextStyle,),
@@ -59,6 +75,8 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                       ),
+                      controller: loginController.passwordController.value,
+
                       obscureText: true,
                        decoration: const InputDecoration(
                         // prefix: Icon(Icons.lock,color: Colors.white,),
@@ -76,6 +94,15 @@ class LoginScreen extends StatelessWidget {
                         border: OutlineInputBorder(),
                         // contentPadding: EdgeInsets.only(left: 8),
                       ),
+                       validator: (value){
+                        
+                       if(value!.isEmpty){
+                          return "Password can't be empty";
+                      }
+                      if(value.isNotEmpty && value.length < 2){
+                        return "Password must be at least 2 character";
+                      }
+                      }
                     ),
                   
                   ],
@@ -89,7 +116,11 @@ class LoginScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () async{
+                      if(formKey.currentState!.validate()){
+                        await loginController.loginWithEmail();
+                      }
+                    },
                     child: const Text("Log In",style: TextStyle(color: Colors.black,fontSize: 20)),
                   ),
             

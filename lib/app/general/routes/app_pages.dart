@@ -1,6 +1,7 @@
 
 
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:statemannagement_with_getx/app/features/authentication/bindings/login_bindings.dart';
 import 'package:statemannagement_with_getx/app/features/authentication/screen/login_screen.dart';
 import 'package:statemannagement_with_getx/app/features/authentication/screen/signup_screen.dart';
 import 'package:statemannagement_with_getx/app/features/home/screens/home_screen.dart';
@@ -25,7 +26,8 @@ class AppPages {
       page: ()=> const HomeScreen()
       ), GetPage(
       name: AppRoutes.logIn,
-      page: ()=> const LoginScreen()
+      page: ()=>  LoginScreen(),
+      binding: LoginBindings(),
       ), GetPage(
       name: AppRoutes.signUp,
       page: ()=> const SignupScreen()
